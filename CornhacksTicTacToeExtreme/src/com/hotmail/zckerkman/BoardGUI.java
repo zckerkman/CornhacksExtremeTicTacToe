@@ -7,6 +7,10 @@ import javax.swing.JPanel;
 
 public class BoardGUI extends JPanel{
 	/**
+	 * Used to serialize the Board GUI class. (Recommended to use default Java serialization without transiency)
+	 */
+	private static final long serialVersionUID = 123212321L;
+	/**
 	 * The id of a tile.
 	 */
 	private int boardID;

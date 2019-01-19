@@ -7,17 +7,35 @@ import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class ShowGUI {
-	BufferedImage canvas;
+	static BufferedImage canvas;
 	final static float strokeWidth = 4f;
 
 	public static void main(String[] args) {
-		String[] strings = {"a","b","c","d","e","f","g","h","i"};
-		BoardGUI boardGui = new BoardGUI(strings);
+		
+		String[] strings = {"X","X","X","O","X","O","O","O","X"};
+		String[][] stringArray = new String[9][];
+		for (int i = 0; i < 9; i++) {
+			stringArray[i] = strings;
+		}
+		
+		MasterBoardGUI masterBoardGui = new MasterBoardGUI(stringArray);
+		/**
+		MasterBoard mb = new MasterBoard();
+		mb.setBoardValues(0, 0, State.X);
+		ArrayList<String[]> strings = new ArrayList<String[]>();
+		for(Board board: mb.getBoards()) {
+			for(State state: board.getBoxes()) {
+				State.convertToString(state);
+			}
+		}
+		*/
+		
 		
 		JFrame frame = new JFrame("Extreme");
 		
@@ -25,17 +43,36 @@ public class ShowGUI {
 		frame.setSize(900, 900);
 		frame.setLocationRelativeTo(null);
 		
-		JPanel panel = boardGui.iterateThroughBoardValues();
+		JPanel panel = masterBoardGui.iterateThroughBoardValues();
 		
 		frame.add(panel);
 		
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Draws a grid.
+	 * 
+	 * @param sideLength the length of each rectangle
+	 * @param c          the desired color for the grid
+	 */
+	public void drawGrid(int sideLength, Color c) {
+		int width = 900;
+		int height = 900;
+		// Generates the vertical lines
+		for (int i = 1; i < width; i++) {
+			drawLine(sideLength * i, 0, sideLength * i, sideLength * height, c);
+		}
+		
+		// Generates the horizontal lines
+		for (int i = 1; i < height; i++) {
+			drawLine(0, sideLength * i, sideLength * width, sideLength * i, c);
+		}
+	}
 	
 	/**
 	 * Draws a line.
-	 * Function from Stephanie Valentine, Assistant Professor of Practice, UNL.
+	 * Function sourced from Stephanie Valentine, Assistant Professor of Practice, UNL.
 	 * 
 	 * @param x1 the x coordinate of the first point
 	 * @param y1 the y coordinate of the first point

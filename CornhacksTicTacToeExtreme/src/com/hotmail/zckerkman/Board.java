@@ -16,6 +16,10 @@ public class Board {
 		return boxes[i];
 	}
 	
+	public State[] getBoxes() {
+		return boxes;
+	}
+	
 	public void setBoardState(int i, State s) {
 		boxes[i] = s;
 	}

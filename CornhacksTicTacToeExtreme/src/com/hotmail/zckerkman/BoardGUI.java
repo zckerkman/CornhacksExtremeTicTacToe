@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class BoardGUI {
+public class BoardGUI extends JPanel{
 	/**
 	 * The id of a tile.
 	 */

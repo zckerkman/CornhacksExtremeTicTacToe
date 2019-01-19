@@ -1,5 +1,9 @@
 package com.hotmail.zckerkman;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -30,6 +34,8 @@ public class Tile {
 		this.tileID = tileCount++;
 		this.panel = new JPanel();
 		JLabel panelText = new JLabel(text);
+		panelText.setFont(new Font("Helvetica", Font.PLAIN, 60));
+		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		panel.add(panelText);
 	}
 	

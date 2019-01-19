@@ -8,6 +8,10 @@ public class MasterBoard extends Board{
 		super();
 	}
 	
+	public Board[] getBoards() {
+		return boards;
+	}
+	
 	public State getBoardValues(int i, int j) {
 		return boards[i].getBoardState(j);
 	}

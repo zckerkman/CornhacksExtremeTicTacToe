@@ -8,12 +8,12 @@ public class MasterBoard extends Board{
 		super();
 	}
 	
-	public Board getBoard(int i) {
-		return boards[i];
+	public State getBoardValues(int i, int j) {
+		return boards[i].getBoardState(j);
 	}
 	
-	public void setBoard(int i, Board board) {
-		boards[i] = board; 
+	public void setBoardValues(int i, int j, State s) {
+		boards[i].setBoardState(j, s);
 	}
 	
 	public void makeBoards() {

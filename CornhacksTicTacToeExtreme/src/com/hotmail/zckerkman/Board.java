@@ -11,7 +11,6 @@ public class Board {
 	 * An array of the tiles on the board.
 	 */
 	protected State[] tiles = new State[9];
-	
 	/**
 	 * The current winning state of the board.
 	 */

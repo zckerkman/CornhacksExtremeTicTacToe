@@ -1,54 +1,83 @@
 package com.hotmail.zckerkman;
 
+/**
+ * Models a board.
+ * 
+ * @author LukeAVanDrie, ZCKerkman
+ */
 public class Board {
-		
-	protected State[] boxes = new State[9];
+
+	/**
+	 * An array of the tiles on the board.
+	 */
+	protected State[] tiles = new State[9];
 	
+	/**
+	 * The current winning state of the board.
+	 */
 	protected State winner = State.EMPTY;
 	
 	public Board() {
-		for(int i = 0; i < boxes.length; i++) {
-			boxes[i] = State.EMPTY;
+		/**
+		 * Adds the tiles to the board.
+		 */
+		for(int i = 0; i < tiles.length; i++) {
+			tiles[i] = State.EMPTY;
 		}
 	}
 	
-	public State getBoardState(int i) {
-		return boxes[i];
+	/**
+	 * Gets the states of tiles from a board.
+	 * 
+	 * @return the board's tile's states
+	 */
+	public State[] getTileStates() {
+		return tiles;
 	}
 	
-	public State[] getBoxes() {
-		return boxes;
-	}
-	
+	/**
+	 * Sets the winning state of a board.
+	 * 
+	 * @param the board ID
+	 * @param the desired state
+	 */
 	public void setBoardState(int i, State s) {
-		boxes[i] = s;
+		tiles[i] = s;
 	}
 	
+	/**
+	 * Gets the winning state of the board.
+	 * 
+	 * @return the winning state of the board
+	 */
 	public State getWinner() {
 		return winner;
 	}
 	
-	public void setWinner(State s) {
-		winner = s;
-	}
-	
-	public void checkForWinner() {
-		checkForWinner(State.X);
-		checkForWinner(State.O);
-	}
-	
+	/**
+	 * Checks if a user has won a board.
+	 * 
+	 * @param the state of the user being checked
+	 */
 	protected void checkForWinner(State s) {
-		int value = s.ordinal() * 3;
-		for(int i = 0; i < 8; i+=3) {
+		// Determines winning values for each state.
+		int value = (int) Math.pow(s.ordinal(), 2) * 3;
+		
+		// Checks for horizontal win condition.
+		for(int i = 0; i <= 8; i+=3) {
 			if(checkValues(s, value, i, 1)) {
 				return;
 			}
 		}
-		for(int i = 0; i < 3; i+=1) {
+		
+		// Checks for vertical win condition.
+		for(int i = 0; i <= 2; i+=1) {
 			if(checkValues(s, value, i, 3)) {
 				return;
 			}
 		}
+		
+		//Checks diagonal win conditions.
 		if (checkValues(s, value, 0, 4)) {
 			return;
 		}
@@ -57,12 +86,19 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Checks the values for the master board win condition.
+	 */
 	protected boolean checkValues (State s, int value, int i, int increment) {
-		int testVal = 0;
+		int calculatedVal = 0;
+		
+		// Iterates through each cell of a desired row/column.
 		for(int j = i; j <= increment*2 + i ; j+=increment) {
-			testVal += boxes[j].ordinal();
+			calculatedVal += (int) Math.pow(tiles[j].ordinal(), 2);
 		}
-		if(testVal == value) {
+		
+		// If the calculated value equals the desired value, the board has been won.
+		if(calculatedVal == value) {
 			winner = s;
 			return true;
 		}

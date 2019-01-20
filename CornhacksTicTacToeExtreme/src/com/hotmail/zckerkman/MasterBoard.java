@@ -5,7 +5,9 @@ public class MasterBoard extends Board{
 	private Board[] boards = new Board[9];
 	
 	public MasterBoard() {
-		super();
+		for(int i = 0; i < boards.length; i++) {
+			boards[i] = new Board();
+		}
 	}
 	
 	public Board[] getBoards() {

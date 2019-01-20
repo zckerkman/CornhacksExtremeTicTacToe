@@ -7,7 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Tile {
+public class Tile extends JPanel{
 	/**
 	 * The id of a tile.
 	 */
@@ -35,8 +35,8 @@ public class Tile {
 		this.panel = new JPanel();
 		JLabel panelText = new JLabel(text);
 		panelText.setFont(new Font("Helvetica", Font.PLAIN, 60));
-		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		panel.add(panelText);
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.add(panelText);
 	}
 	
 	/**

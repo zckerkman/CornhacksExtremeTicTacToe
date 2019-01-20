@@ -13,6 +13,8 @@ public class MasterBoardGUI {
 	 */
 	private String[][] nestedBoardValues;
 	
+	public BoardGUI[] boards = new BoardGUI[9];
+	
 	public MasterBoardGUI(String[][] nestedBoardValues) {
 		this.nestedBoardValues = nestedBoardValues;
 	}
@@ -23,8 +25,12 @@ public class MasterBoardGUI {
 	public JPanel iterateThroughBoardValues() {
 		JPanel masterBoard = new JPanel();
 		masterBoard.setLayout(new GridLayout(3, 3));
-		for(String[] boardValues: nestedBoardValues) {
-			BoardGUI singleBoard = new BoardGUI(boardValues);
+		
+		for(int i = 0; i < nestedBoardValues.length; i++) {
+			BoardGUI singleBoard = new BoardGUI(nestedBoardValues[i]);
+			// Adds boards to a list
+			boards[i] = singleBoard;
+			
 			JPanel tileBoard = singleBoard.iterateThroughBoardValues();
 			tileBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 7));
 			masterBoard.add(tileBoard);

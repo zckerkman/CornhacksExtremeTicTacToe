@@ -24,18 +24,14 @@ public class BoardGUI extends JPanel{
 	 */
 	private String[] boardValues;
 	
+	public Tile[] tiles = new Tile[9];
+	
 	/**
 	 * BoardGUI constructor.
 	 */
 	public BoardGUI(String[] boardValues){
 		this.boardID = boardCount++;
 		this.boardValues = boardValues;
-	}
-	
-	public JPanel createPanel(String value) {
-		JPanel tilePanel = new Tile(value).getPanel();
-		
-		return tilePanel;
 	}
 	
 	/**
@@ -45,8 +41,9 @@ public class BoardGUI extends JPanel{
 	public JPanel iterateThroughBoardValues() {
 		JPanel board = new JPanel();
 		board.setLayout(new GridLayout(3, 3));
-		for(String value: boardValues) {
-			JPanel tilePanel = createPanel(value);
+		for(int i = 0; i < boardValues.length; i++) {
+			Tile tilePanel = new Tile(boardValues[i]);
+			tiles[i] = tilePanel;
 			board.add(tilePanel);
 		}
 		return board;

@@ -8,10 +8,14 @@ import javax.swing.JPanel;
 public class ShowGUI {
 
 	public static void main(String[] args) {
+		
+		
+		
+		
 		// Creates master board and puts the values from the board backend into a list
 		// of strings representing X, O, or an empty value.
 		MasterBoard mb = new MasterBoard();
-		mb.setBoardValues(0, 0, State.X);
+		//mb.setBoardValues(0, 0, State.X);
 		ArrayList<String[]> nestedStringArrayList = new ArrayList<String[]>();
 		for (Board board : mb.getBoards()) {
 			ArrayList<String> stringArrayList = new ArrayList<String>();
@@ -24,12 +28,6 @@ public class ShowGUI {
 		String[][] nestedStringArray = (String[][]) nestedStringArrayList.toArray();
 		MasterBoardGUI masterBoardGui = new MasterBoardGUI(nestedStringArray);
 
-		JFrame frame = new JFrame("Extreme");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(900, 900);
-		frame.setLocationRelativeTo(null);
-		JPanel panel = masterBoardGui.iterateThroughBoardValues();
-		frame.add(panel);
-		frame.setVisible(true);
+		
 	}
 }

@@ -1,6 +1,5 @@
 package com.hotmail.zckerkman;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -17,6 +16,7 @@ import javax.swing.JPanel;
  * 
  * @author AntonioLinhart, LukeAVanDrie, PLM13 
  */
+@SuppressWarnings("serial")
 public class Tile extends JPanel {
 	/**
 	 * The tile's ID.
@@ -50,7 +50,7 @@ public class Tile extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				MasterBoard mb = ExtremeTicTacToeMain.mb;
+				MainBoard mb = ExtremeTicTacToeMain.mb;
 				State turnState = ExtremeTicTacToeMain.turnState;
 
 				BoardGUI boardGUI = (BoardGUI) Tile.this.getParent();
@@ -65,8 +65,8 @@ public class Tile extends JPanel {
 							BoardGUI tempBoardGUI = null;
 							Tile[] tempTiles = null;
 							// Resets the tile backgrounds.
-							for (int i = 0; i < MasterBoardGUI.boards.length; i++) {
-								tempBoardGUI = MasterBoardGUI.boards[i];
+							for (int i = 0; i < MainBoardGUI.boards.length; i++) {
+								tempBoardGUI = MainBoardGUI.boards[i];
 								tempTiles = tempBoardGUI.tiles;
 								if (mb.getBoard(tempBoardGUI.getBoardID()).getWinner().equals(State.EMPTY)) {
 									for (int j = 0; j < tempTiles.length; j++) {
@@ -92,7 +92,7 @@ public class Tile extends JPanel {
 							}
 
 							// Sets the next board's tile backgrounds to a playable color indicator.
-							BoardGUI nextBoardGUI = MasterBoardGUI.boards[Tile.this.getTileID()];
+							BoardGUI nextBoardGUI = MainBoardGUI.boards[Tile.this.getTileID()];
 							Tile[] tiles = nextBoardGUI.tiles;
 							for (int i = 0; i < tiles.length; i++) {
 								if (!tiles[i].getBackground().equals(Color.LIGHT_GRAY)) {
@@ -121,14 +121,14 @@ public class Tile extends JPanel {
 								boardGUI.revalidate();
 								boardGUI.repaint();
 
-								// Indicates new special spaces on master board.
-								for (int i = 0; i < MasterBoardGUI.boards.length; i++) {
-									tempBoardGUI = MasterBoardGUI.boards[i];
+								// Indicates new special spaces on main board.
+								for (int i = 0; i < MainBoardGUI.boards.length; i++) {
+									tempBoardGUI = MainBoardGUI.boards[i];
 									tiles = tempBoardGUI.tiles;
 									tiles[boardGUI.getBoardID()].setBackground(Color.LIGHT_GRAY);
 								}
 								
-								// Determines if the master board has been won by the user.
+								// Determines if the main board has been won by the user.
 								mb.checkForWinner(turnState);
 								if (mb.getWinner().equals(turnState)) {
 									
@@ -155,8 +155,8 @@ public class Tile extends JPanel {
 						
 						
 						// Resets the tile backgrounds.
-						for (int i = 0; i < MasterBoardGUI.boards.length; i++) {
-							tempBoardGUI = MasterBoardGUI.boards[i];
+						for (int i = 0; i < MainBoardGUI.boards.length; i++) {
+							tempBoardGUI = MainBoardGUI.boards[i];
 							tiles = tempBoardGUI.tiles;
 							if (mb.getBoard(tempBoardGUI.getBoardID()).getWinner().equals(State.EMPTY)) {
 								for (int j = 0; j < tiles.length; j++) {
@@ -168,8 +168,8 @@ public class Tile extends JPanel {
 						}
 
 						// Displays the playable boards.
-						for (int i = 0; i < MasterBoardGUI.boards.length; i++) {
-							tempBoardGUI = MasterBoardGUI.boards[i];
+						for (int i = 0; i < MainBoardGUI.boards.length; i++) {
+							tempBoardGUI = MainBoardGUI.boards[i];
 							tiles = tempBoardGUI.tiles;
 							if (mb.getBoard(tempBoardGUI.getBoardID()).getWinner().equals(State.EMPTY)) {
 								for (int j = 0; j < tiles.length; j++) {

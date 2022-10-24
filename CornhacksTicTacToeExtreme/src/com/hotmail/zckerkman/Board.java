@@ -86,7 +86,7 @@ public class Board {
 	}
 	
 	/**
-	 * Checks the values for the master board win condition.
+	 * Checks the values for the main board win condition.
 	 */
 	protected boolean checkValues (State s, int value, int i, int increment) {
 		int calculatedVal = 0;

@@ -18,27 +18,27 @@ public class ExtremeTicTacToeMain {
 	 */
 	public static State turnState = State.X;
 	/**
-	 * The master board.
+	 * The main board.
 	 */
-	public static MasterBoard mb;
+	public static MainBoard mb;
 	/**
 	 * Contains the GUI.
 	 */
 	public static JFrame frame;
 
 	public static void main(String[] args) {
-		// Creates master board.
-		mb = new MasterBoard();
+		// Creates main board.
+		mb = new MainBoard();
 		
 		// Creates an array of the tile states in String form.
 		String[][] nestedStringArray = new String[9][9];
 
-		// Iterates through all boards in the master board.
+		// Iterates through all boards in the main board.
 		Board[] boards = mb.getBoards();
 		for (int i = 0; i < boards.length; i++) {
 			ArrayList<String> stringArrayList = new ArrayList<String>();
 
-			// Iterates through the states of each board in the master board and
+			// Iterates through the states of each board in the main board and
 			// adds their String representations to an ArrayList.
 			State[] boxes = boards[i].getTileStates();
 			for (int j = 0; j < boxes.length; j++) {
@@ -46,7 +46,7 @@ public class ExtremeTicTacToeMain {
 			}
 
 			// Adds a board's states represented as Strings to the array of the states of all
-			// of the boards in the master board.
+			// of the boards in the main board.
 			String[] stringArray = new String[9];
 			for (int j = 0; j < stringArrayList.size(); j++) {
 				stringArray[j] = stringArrayList.get(j);
@@ -55,13 +55,13 @@ public class ExtremeTicTacToeMain {
 			nestedStringArray[i] = stringArray;
 		}
 
-		// Creates master board GUI from saved values.
-		MasterBoardGUI masterBoardGui = new MasterBoardGUI(nestedStringArray);
-		JPanel panel = masterBoardGui.iterateThroughBoardValues();
+		// Creates main board GUI from saved values.
+		MainBoardGUI mainBoardGui = new MainBoardGUI(nestedStringArray);
+		JPanel panel = mainBoardGui.iterateThroughBoardValues();
 		
 
 		// Sets the initial board's tile backgrounds to a playable color indicator.
-		BoardGUI boardGUI = MasterBoardGUI.boards[4];
+		BoardGUI boardGUI = MainBoardGUI.boards[4];
 		Tile[] tiles = boardGUI.tiles;
 		for (int i = 0; i < tiles.length; i++) {
 			tiles[i].setBackground(Color.GREEN);

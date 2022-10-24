@@ -1,28 +1,28 @@
 package com.hotmail.zckerkman;
 
 /**
- * Models the master board.
+ * Models the main board.
  * 
  * @author LukeAVanDrie, ZCKerkman
  */
-public class MasterBoard extends Board {
+public class MainBoard extends Board {
 
 	/**
-	 * An array of all boards in the master board.
+	 * An array of all boards in the main board.
 	 */
 	private Board[] boards = new Board[9];
 
-	public MasterBoard() {
-		// Adds boards to master board.
+	public MainBoard() {
+		// Adds boards to main board.
 		for (int i = 0; i < boards.length; i++) {
 			boards[i] = new Board();
 		}
 	}
 
 	/**
-	 * Gets all boards from the master board.
+	 * Gets all boards from the main board.
 	 * 
-	 * @return all boards in the master board
+	 * @return all boards in the main board
 	 */
 	public Board[] getBoards() {
 		return boards;
@@ -51,7 +51,7 @@ public class MasterBoard extends Board {
 
 	@Override
 	/**
-	 * Checks the values for the master board win condition.
+	 * Checks the values for the main board win condition.
 	 */
 	public boolean checkValues(State s, int value, int i, int increment) {
 		int calculatedVal = 0;
